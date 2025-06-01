@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodze - Food Delivery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-primary fw-bold" href="#">Foodze</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex mx-auto" style="max-width: 400px;">
+                    <div class="input-group">
+                        <span class="input-group-text bg-light border-end-0">
+                            <i class="fas fa-search text-muted"></i>
+                        </span>
+                        <input type="search" class="form-control border-start-0" placeholder="Search for restaurants or food">
+                    </div>
+                </form>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="offersButton"><i class="fas fa-percentage"></i> Offers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="loginButton"><i class="fas fa-user"></i> Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="cartButton"><i class="fas fa-shopping-cart"></i> Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="restaurants py-5">
+        <div class="container-fluid px-4 px-lg-5">
+            <h2 class="text-center mb-4">Popular Restaurants</h2>
+            <div id="menuModal" class="menu-modal">
+                <div class="menu-modal-content">
+                    <div class="menu-header">
+                        <h3 class="restaurant-name"></h3>
+                        <button class="close-menu">&times;</button>
+                    </div>
+                    <div class="menu-items-container"></div>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 border-0 shadow-sm restaurant-card">
+                        <img src="https://www.nativeplanet.com/img/2023/11/a-platter-of-traditional-punjabi-dishes-served-in-ludhiana_1700893871869-1200x675-20231125120802.jpg" alt="Punjab Express">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">Punjab Express</h5>
+                                <span class="badge bg-success">
+                                    <i class="fas fa-star"></i> 4.6
+                                </span>
+                            </div>
+                            <p class="card-text text-muted">North Indian, Punjabi, Curry</p>
+                            <p class="card-text"><small class="text-muted">₹250 for two • 35-40 mins</small></p>
+                            <button class="btn btn-primary view-menu-btn mt-3" data-restaurant="punjab-express">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 border-0 shadow-sm restaurant-card">
+                        <img src="https://s1.stabroeknews.com/images/2017/10/burgerking.jpg" alt="Burger King">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">Burger King</h5>
+                                <span class="badge bg-success">
+                                    <i class="fas fa-star"></i> 4.0
+                                </span>
+                            </div>
+                            <p class="card-text text-muted">American, Burgers, Fast Food</p>
+                            <p class="card-text"><small class="text-muted">₹150 for two • 25-30 mins</small></p>
+                            <button class="btn btn-primary view-menu-btn mt-3" data-restaurant="burger-king">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 border-0 shadow-sm restaurant-card">
+                        <img src="https://th.bing.com/th/id/R.09fc941c0dfc46762175d90fc095dfee?rik=48LrueadF5JeJg&riu=http%3a%2f%2f2.bp.blogspot.com%2f-KsIuWKh1QRk%2fUGMmRQGxFgI%2fAAAAAAAAAK4%2ftdpGwHDFQJo%2fs1600%2fcone-dosa.jpg&ehk=C%2fjjoZbkpEqU4sMZWW3omMZRPQy7MJkXQi2AGj474uk%3d&risl=&pid=ImgRaw&r=0" alt="South Indian Restaurant">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">Dosa Corner</h5>
+                                <span class="badge bg-success">
+                                    <i class="fas fa-star"></i> 4.4
+                                </span>
+                            </div>
+                            <p class="card-text text-muted">South Indian, Idli, Dosa</p>
+                            <p class="card-text"><small class="text-muted">₹150 for two • 25-30 mins</small></p>
+                            <button class="btn btn-primary view-menu-btn mt-3" data-restaurant="dosa-corner">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 border-0 shadow-sm restaurant-card">
+                        <img src="https://media-cdn.tripadvisor.com/media/photo-s/13/99/aa/06/charlie-s-dessert-house.jpg" alt="Sweet Magic">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">Sweet Magic</h5>
+                                <span class="badge bg-success">
+                                    <i class="fas fa-star"></i> 4.3
+                                </span>
+                            </div>
+                            <p class="card-text text-muted">Desserts, Cakes, Ice Cream</p>
+                            <p class="card-text"><small class="text-muted">₹200 for two • 20-25 mins</small></p>
+                            <button class="btn btn-primary view-menu-btn mt-3" data-restaurant="sweet-magic">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="card h-100 border-0 shadow-sm restaurant-card">
+                        <img src="https://www.thespruceeats.com/thmb/9sjJKTJ1yw1BqtHv2Zayaj6Zt_k=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-639704020-5c4a63ecc9e77c00017bfebf.jpg" alt="Biryani House">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="card-title">Biryani House</h5>
+                                <span class="badge bg-success">
+                                    <i class="fas fa-star"></i> 4.5
+                                </span>
+                            </div>
+                            <p class="card-text text-muted">Indian, Biryani, North Indian</p>
+                            <p class="card-text"><small class="text-muted">₹300 for two • 40-45 mins</small></p>
+                            <button class="btn btn-primary view-menu-btn mt-3" data-restaurant="biryani-house">View Menu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Modal -->
+    <div id="offersModal" class="menu-modal">
+        <div class="menu-modal-content">
+            <div class="menu-header">
+                <h3>Available Offers</h3>
+                <button class="close-menu">&times;</button>
+            </div>
+            <div class="offers-container">
+                <div class="offer-card">
+                    <div class="offer-icon">🎉</div>
+                    <h4>10% OFF</h4>
+                    <p>On orders above ₹100</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">🌟</div>
+                    <h4>25% OFF</h4>
+                    <p>On orders above ₹300</p>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon">💎</div>
+                    <h4>50% OFF</h4>
+                    <p>On orders above ₹500</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="menu-modal">
+        <div class="menu-modal-content">
+            <div class="menu-header">
+                <h3>Your Cart</h3>
+                <button class="close-menu">&times;</button>
+            </div>
+            <div class="cart-container">
+                <div id="cartItems"></div>
+                <div class="cart-summary">
+                    <div class="subtotal"></div>
+                    <div class="discount"></div>
+                    <div class="total"></div>
+                </div>
+                <div class="offers-section">
+                    <h4>Available Offers</h4>
+                    <ul>
+                        <li>10% off on orders above ₹100</li>
+                        <li>25% off on orders above ₹300</li>
+                        <li>50% off on orders above ₹500</li>
+                    </ul>
+                </div>
+                <div class="payment-section">
+                    <h4>Payment Method</h4>
+                    <div class="payment-options">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" value="credit">
+                            <label class="form-check-label" for="creditCard">Credit Card</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="debitCard" value="debit">
+                            <label class="form-check-label" for="debitCard">Debit Card</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="upi" value="upi">
+                            <label class="form-check-label" for="upi">UPI</label>
+                        </div>
+                    </div>
+                    <div class="payment-details mt-3">
+                        <div id="cardPayment" class="payment-form">
+                            <input type="text" class="form-control mb-2" placeholder="Card Number">
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="MM/YY">
+                                </div>
+                                <div class="col-6">
+                                    <input type="text" class="form-control" placeholder="CVV">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="upiPayment" class="payment-form" style="display: none;">
+                            <input type="text" class="form-control" placeholder="Enter UPI ID">
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 mt-4" id="proceedToPayment">Proceed to Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="menu-modal">
+        <div class="menu-modal-content">
+            <div class="menu-header">
+                <h3>Sign In / Register</h3>
+                <button class="close-menu">&times;</button>
+            </div>
+            <div class="auth-container">
+                <form id="loginForm" class="auth-form">
+                    <div class="user-icon text-center mb-4">
+                        <i class="fas fa-user-circle fa-4x text-primary"></i>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <div class="text-center mt-3">
+                        <p>New user? <a href="#" id="showRegister">Create account</a></p>
+                    </div>
+                </form>
+                <form id="registerForm" class="auth-form" style="display: none;">
+                    <div class="user-icon text-center mb-4">
+                        <i class="fas fa-user-plus fa-4x text-primary"></i>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" class="form-control" placeholder="Phone Number" required pattern="[0-9]{10}">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                    <div class="text-center mt-3">
+                        <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
